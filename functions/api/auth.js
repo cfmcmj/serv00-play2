@@ -1,10 +1,10 @@
 const COOKIE_NAME = 'auth_token';
-const PASSWORD = process.env.CFP_PASSWORD;
 
 export async function onRequestPost(context) {
-  const { request } = context;
+  const { request, env } = context;
   const body = await request.formData();
   const enteredPassword = body.get('password');
+  const PASSWORD = env.CFP_PASSWORD;
 
   if (enteredPassword === PASSWORD) {
     const headers = new Headers();
