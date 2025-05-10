@@ -10,8 +10,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/static', express.static(path.join(__dirname, 'static')))
 const user = require('child_process').execSync('whoami').toString().trim()
-const serv00PlayDir = `/home/${user}/serv00-play`
-const keepaliveScript = `${serv00PlayDir}/keepalive.sh`
+const projectDir = `/home/${user}/Fmie--primary`
+const keepaliveScript = `${projectDir}/keepalive.sh`
 
 // 读取配置文件
 const configPath = path.join(__dirname, 'config.json')
@@ -91,7 +91,7 @@ function cleanAndDecode(str) {
 
 // 定时调用脚本的方法
 function scheduleScript() {
-  const cmd = `cd ${serv00PlayDir} && bash ${keepaliveScript} `
+  const cmd = `cd ${projectDir} && bash ${keepaliveScript} `
 
   const executeScript = () => {
     const interval = (parseInt(config.interval, 10) || 5) * 60000 // 默认5分钟
@@ -179,7 +179,7 @@ app.get('/keep', validateToken, async (req, res) => {
   )
   // 本地执行
   logError('本地执行keepalive')
-  const cmd = `cd ${serv00PlayDir} && nohup bash ${keepaliveScript} ${params.autoupdate} ${params.sendtype} ${params.telegramtoken} ${params.telegramuserid} ${params.wxsendkey} ${params.buttonurl} ${params.pass} > /dev/null 2>&1 &`
+  const cmd = `cd ${projectDir} && nohup bash ${keepaliveScript} ${params.autoupdate} ${params.sendtype} ${params.telegramtoken} ${params.telegramuserid} ${params.wxsendkey} ${params.buttonurl} ${params.pass} > /dev/null 2>&1 &`
   logError('cmd:' + cmd)
   exec(cmd, (error) => {
     if (error) {
