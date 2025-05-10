@@ -1,5 +1,6 @@
 #!/bin/bash
 
+<<<<<<< HEAD
 RED='\033[0;91m'
 GREEN='\033[0;92m'
 YELLOW='\033[0;33m'
@@ -797,3 +798,26 @@ checkCronName() {
     return 1
   fi
 }
+=======
+# Utility functions for Fmie--primary
+
+# Print colored text
+red() {
+  echo -e "\033[31m$1\033[0m"
+}
+
+green() {
+  echo -e "\033[32m$1\033[0m"
+}
+
+yellow() {
+  echo -e "\033[33m$1\033[0m"
+}
+
+# Get domain for the current user
+getDoMain() {
+  local user=$(whoami)
+  local domain=$(devil domain list | grep "$user" | awk '{print $1}')
+  echo "$domain"
+}
+>>>>>>> f96302309a7b6c16728ef9778d28572393bac385

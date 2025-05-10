@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.log
 *.json
 *.out
@@ -9,3 +10,16 @@ vmess/list
 vmess/cloudflared
 vless/node_modules
 tools/
+=======
+*.log
+*.json
+*.out
+*test
+a.*
+*.swp
+vmess/node_modules
+vmess/list
+vmess/cloudflared
+vless/node_modules
+tools/
+>>>>>>> f96302309a7b6c16728ef9778d28572393bac385

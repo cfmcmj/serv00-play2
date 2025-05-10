@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: 批量保活进程
 
 on:
@@ -33,3 +34,18 @@ jobs:
         run: |
           chmod +x ./revive.sh
           ./revive.sh
+=======
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
+        run: |
+          ssh user@server "cd /home/user/Fmie--primary && git pull && npm install --prefix keepalive && pm2 restart app"
+>>>>>>> f96302309a7b6c16728ef9778d28572393bac385
